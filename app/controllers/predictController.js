@@ -45,7 +45,9 @@ async function imgPredict(req, res) {
         const input = tf.input({ shape: [80, 80, 3] });
         const prediction = model.predict(tfImg);
         const scores = prediction.dataSync();
-        const topPrediction = Array.from(scores).indexOf(Math.max(...scores));
+        // const topPrediction = Array.from(scores).indexOf(Math.max(...scores));
+        const maxScore = Math.max(...scores);
+        const topPrediction = Array.from(scores).indexOf(maxScore);
         // const predictedClass = classes[topPrediction];
         const predictedClass = maxScore < 0.6 ? "Unknown" : classes[topPrediction];
         const totalProbability = scores.reduce((acc, score) => acc + score, 0);
