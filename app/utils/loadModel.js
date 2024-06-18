@@ -6,7 +6,7 @@ async function loadModel() {
 }
 
 async function loadModelStorage() {
-    const modelPath = 'https://storage.googleapis.com/model-ml-healthyeat/tfjs_target_directory/model.json';
+    const modelPath = 'https://storage.googleapis.com/model-ml-healthyeat/ML/tfjs_target_directory/model.json';
     const model = await tf.loadLayersModel(modelPath);
     return model;
 }

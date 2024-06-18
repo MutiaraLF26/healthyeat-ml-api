@@ -29,7 +29,7 @@ async function imgPredict(req, res) {
             };
         }
 
-        const model = await loadModel.loadModelLocal();
+        const model = await loadModel.loadModelStorage();
 
         const fileBase64 = req.file.buffer.toString('base64');
         const file = `data:${req.file.mimetype};base64,${fileBase64}`;
