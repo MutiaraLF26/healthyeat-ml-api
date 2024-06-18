@@ -9,3 +9,5 @@ steps:
 
 images:
 - 'gcr.io/$PROJECT_ID/healthyeat-ml-api:$COMMIT_SHA'
+
+logsBucket: 'gs://model-ml-healthyeat'
