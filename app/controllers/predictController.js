@@ -46,7 +46,8 @@ async function imgPredict(req, res) {
         const prediction = model.predict(tfImg);
         const scores = prediction.dataSync();
         const topPrediction = Array.from(scores).indexOf(Math.max(...scores));
-        const predictedClass = classes[topPrediction];
+        // const predictedClass = classes[topPrediction];
+        const predictedClass = maxScore < 0.6 ? "Unknown" : classes[topPrediction];
         const totalProbability = scores.reduce((acc, score) => acc + score, 0);
 
         res.status(200).json({
@@ -62,7 +63,14 @@ async function imgPredict(req, res) {
         });
     } catch (err) {
         console.error('Error processing image:', err.message);
-        res.status(500).send('Error processing image');
+        res.status(500).json({
+            name: "error",
+            status: 500,
+            message: "Error processing image",
+            data: {
+                error: err.message,
+            },
+        });
     }
     // try {
     //     if (!req.file) {
