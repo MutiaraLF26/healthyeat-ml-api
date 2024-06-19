@@ -74,38 +74,7 @@ async function imgPredict(req, res) {
             },
         });
     }
-    // try {
-    //     if (!req.file) {
-    //         throw new Error("All fields must be filled");
-    //     }
 
-    //     const model = await loadModel();
-
-    //     const fileBase64 = req.file.buffer.toString("base64");
-    //     const file = `data:${req.file.mimetype};base64,${fileBase64}`;
-    //     const imageBuffer = base64ToBuffer(file);
-
-    //     const tfImg = tf.node.decodeImage(imageBuffer)
-    //         .resizeNearestNeighbor([100, 100])
-    //         .expandDims()
-    //         .toFloat()
-    //         .div(tf.scalar(255));
-
-    //     const predict = model.predict(tfImg);
-    //     const scores = predict.dataSync();
-    //     const predictions = Array.from(scores).indexOf(Math.max(...scores));
-
-    //     res.status(200).json({
-    //         name: "success",
-    //         message: "Prediction Success",
-    //         data: {
-    //             predictions: predictions,
-    //         },
-    //     });
-    // } catch (err) {
-    //     console.error('Error processing image:', err.message);
-    //     res.status(500).send('Error processing image');
-    // }
 }
 
 module.exports = { imgPredict };
