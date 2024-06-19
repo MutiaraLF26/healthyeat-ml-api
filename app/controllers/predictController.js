@@ -64,7 +64,7 @@ async function imgPredict(req, res) {
         const file = `data:${req.file.mimetype};base64,${fileBase64}`;
         const imageBuffer = base64ToBuffer(file);
 
-        const tfImg = tf.node.decodeImage(imageBuffer)
+        const tfImg = tf.node.decodeImage(imageBuffer, 3)
             .resizeNearestNeighbor([100, 100])
             .expandDims()
             .toFloat()
